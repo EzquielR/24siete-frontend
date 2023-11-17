@@ -1,6 +1,7 @@
 "use client";
 import './globals.css';
 import { StoreProvider } from '@/redux/provider';
+import NavBar from '@/components/navBar';
 
 export default function RootLayout({
 	children,
@@ -13,7 +14,8 @@ export default function RootLayout({
           <title>24Siete</title>
         </head>
         <body>
-            <StoreProvider>          
+            <StoreProvider>
+              <NavBar />          
               {children}
             </StoreProvider>
         </body>
