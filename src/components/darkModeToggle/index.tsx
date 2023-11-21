@@ -19,19 +19,20 @@ const DarkModeToggle = () => {
 		) {
 			document.querySelector('html')!.classList.add('dark');
 			localStorage.setItem('darkMode', 'true');
-			switchToggle!.classList.remove('bg-yellow-500', '-translate-x-2');
-			switchToggle!.classList.add('bg-gray-700', 'translate-x-full');
-			setTimeout(() => {
-				switchToggle!.innerHTML = darkIcon;
-			}, 250);
-		} else {
-			document.querySelector('html')!.classList.remove('dark');
-			setIsDarkMode(false)
 			switchToggle!.classList.add('bg-yellow-500', '-translate-x-2');
 			switchToggle!.classList.remove('bg-gray-700', 'translate-x-full');
 			setTimeout(() => {
 				switchToggle!.innerHTML = lightIcon;
 			}, 250);
+		} else {
+			document.querySelector('html')!.classList.remove('dark');
+			localStorage.setItem('darkMode', 'false');
+			switchToggle!.classList.remove('bg-yellow-500', '-translate-x-2');
+			switchToggle!.classList.add('bg-gray-700', 'translate-x-full');
+			setTimeout(() => {
+				switchToggle!.innerHTML = darkIcon;
+			}, 250);
+			setIsDarkMode(false)
 		}
 	}, []);
 	
@@ -48,26 +49,26 @@ const DarkModeToggle = () => {
 		setIsDarkMode(isDark);
 		if (isDark) {
 			document.documentElement.classList.add('dark');
-			switchToggle!.classList.remove('bg-yellow-500', '-translate-x-2');
-			switchToggle!.classList.add('bg-gray-700', 'translate-x-full');
+			switchToggle!.classList.add('bg-yellow-500', '-translate-x-2');
+			switchToggle!.classList.remove('bg-gray-700', 'translate-x-full');
 			setTimeout(() => {
-				switchToggle!.innerHTML = darkIcon;
+				switchToggle!.innerHTML = lightIcon;
 			}, 250);
 		}
 	}, []);
 
 	const switchTheme = () => {
 		if (!isDarkMode) {
-			switchToggle!.classList.remove('bg-yellow-500', '-translate-x-2');
-			switchToggle!.classList.add('bg-gray-700', 'translate-x-full');
-			setTimeout(() => {
-				switchToggle!.innerHTML = darkIcon;
-			}, 250);
-		} else {
 			switchToggle!.classList.add('bg-yellow-500', '-translate-x-2');
 			switchToggle!.classList.remove('bg-gray-700', 'translate-x-full');
 			setTimeout(() => {
 				switchToggle!.innerHTML = lightIcon;
+			}, 250);
+		} else {
+			switchToggle!.classList.remove('bg-yellow-500', '-translate-x-2');
+			switchToggle!.classList.add('bg-gray-700', 'translate-x-full');
+			setTimeout(() => {
+				switchToggle!.innerHTML = darkIcon;
 			}, 250);
 		}
 		toggleDarkMode()
